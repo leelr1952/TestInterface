@@ -1,0 +1,13 @@
+class global_val:
+    id = '0'
+    name = '1'
+    url = '2'
+    run = '3'
+    request_way = '4'
+    header = '5'
+    case_depend = '6'
+    data_depend = '7'
+    field_depend = '8'
+    data = '9'
+    expect = '10'
+    result = '11'
