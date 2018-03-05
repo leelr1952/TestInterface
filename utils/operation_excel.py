@@ -2,7 +2,7 @@ import xlrd
 
 
 class OperationExcel(object):
-    def __init__(self,filename,sheet_id):
+    def __init__(self,filename=None,sheet_id=0):
         if filename:
             self.filename = filename
             self.sheet_id = sheet_id
