@@ -7,13 +7,13 @@ class GetData(object):
     def __init__(self):
         self.opera_excel = OperationExcel()
 
-    def get_lines(self):
+    def get_case_lines(self):
         return self.opera_excel.get_lines()
 
     def get_is_run(self,row):
         flag =None
         col = data_config.global_val.get_run()
-        run_model = self.opera_excel.get_cell_value(row,col)
+        run_model = self.opera_excel.get_cell_value(row,int(col))
         if run_model == 'yes':
             flag = True
         else:
@@ -61,4 +61,4 @@ class GetData(object):
 
 if __name__ == '__main__':
     gd = GetData()
-    print(gd.get_is_run(2))
+    print(gd.get_is_run(1))

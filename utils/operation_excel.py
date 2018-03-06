@@ -2,13 +2,15 @@ import xlrd
 
 
 class OperationExcel(object):
-    def __init__(self,filename=None,sheet_id=0):
+    def __init__(self,filename=None,sheet_id=None):
         if filename:
             self.filename = filename
             self.sheet_id = sheet_id
             self.data = self.get_data()
         else:
             self.filename = '../dataconfig/interface.xlsx'
+            self.sheet_id = 0
+            self.data = self.get_data()
 
     def get_data(self):
         data = xlrd.open_workbook(self.filename)
