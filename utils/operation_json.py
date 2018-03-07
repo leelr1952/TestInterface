@@ -7,7 +7,7 @@ class OperationJson(object):
         self.data = self.read_data()
 
     def read_data(self):
-        with open('../dataconfig/login.json') as fp:
+        with open('../dataconfig/user.json') as fp:
             data = json.load(fp)
             return data
 

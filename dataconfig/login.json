@@ -1,3 +1,5 @@
-{"login":{"username":"Mushishi","password":"111111"},
-"loginout":{"username":"Mushishi","password":"111111"},
-"addcart":{"username":"yes","password":"123456"}}
+{"login":{"uid":"0","service_id":"1","os":"Android","secrectd_code":"ffffffff},
+"head_banner":{"timestamp":"1507468857161","uid":"5249191","uuid":"5ae7d1a22c8},
+"cart_order":{"timestamp":"1507468857155","uid":"5249191","token":"168b948b416},
+"last_learn":{"timestamp":"1507468857174","uid":"5249191","uuid":"5ae7d1a22c8},
+"course_detail":{"cid":"99","app":"1"}}

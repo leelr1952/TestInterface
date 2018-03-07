@@ -4,8 +4,8 @@ from utils.operation_json import OperationJson
 
 
 class GetData(object):
-    def __init__(self):
-        self.opera_excel = OperationExcel()
+    def __init__(self,filename=None,sheet_id=None):
+        self.opera_excel = OperationExcel(filename,sheet_id)
 
     def get_case_lines(self):
         return self.opera_excel.get_lines()
@@ -22,7 +22,7 @@ class GetData(object):
 
     def is_header(self,row):
         col = data_config.global_val.get_header()
-        header = self.opera_excel.get_cell_value(row,col)
+        header = self.opera_excel.get_cell_value(row,int(col))
         if header == 'yes':
             return data_config.get_header.value()
         else:
@@ -30,17 +30,17 @@ class GetData(object):
 
     def get_request_method(self,row):
         col = data_config.global_val.get_request_way()
-        request_method = self.opera_excel.get_cell_value(row,col)
+        request_method = self.opera_excel.get_cell_value(row,int(col))
         return request_method
 
     def get_url(self,row):
         col = data_config.global_val.get_url()
-        url = self.opera_excel.get_cell_value(row,col)
+        url = self.opera_excel.get_cell_value(row,int(col))
         return url
 
     def get_request_data(self,row):
         col = data_config.global_val.get_data()
-        data = self.opera_excel.get_cell_value(row,col)
+        data = self.opera_excel.get_cell_value(row,int(col))
         if data == '':
             return None
         else:
@@ -53,7 +53,7 @@ class GetData(object):
 
     def get_expect(self,row):
         col = data_config.global_val.get_expect()
-        expect = self.opera_excel.get_cell_value(row,col)
+        expect = self.opera_excel.get_cell_value(row,int(col))
         if expect == '':
             return None
         else:

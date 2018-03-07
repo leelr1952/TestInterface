@@ -13,9 +13,9 @@ class RunMethod(object):
     def get_main(self,url,data,header=None):
         res = None
         if header is not None:
-            res = requests.get(url=url, data=data, headers=header).json()
+            res = requests.get(url=url, data=data, headers=header)
         else:
-            res = requests.get(url=url, data=data).json()
+            res = requests.get(url=url, data=data)
         return res
 
     def run_main(self,url,method,data=None,header=None):

@@ -8,7 +8,7 @@ class OperationExcel(object):
             self.sheet_id = sheet_id
             self.data = self.get_data()
         else:
-            self.filename = '../dataconfig/interface.xlsx'
+            self.filename = '../dataconfig/testinterface.xlsx'
             self.sheet_id = 0
             self.data = self.get_data()
 
@@ -25,6 +25,6 @@ class OperationExcel(object):
         return self.data.cell_value(row,col)
 
 if __name__ == '__main__':
-    operationexcle = OperationExcel('../dataconfig/interface.xlsx',0)
+    operationexcle = OperationExcel('../dataconfig/case1.xls',0)
     print(operationexcle.get_cell_value(2,0))
 #/Users/lirui/PycharmProjects/testInterface/interface.xlsx
