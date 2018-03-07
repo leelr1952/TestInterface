@@ -5,7 +5,7 @@ from data.get_data import GetData
 class RunTest(object):
     def __init__(self):
         self.runmethod = RunMethod()
-        self.getdata = GetData('../dataconfig/case1.xls',0)
+        self.getdata = GetData('../dataconfig/case1.xlsx',0)
 
     def go_on_run(self):
         rows = self.getdata.get_case_lines()
