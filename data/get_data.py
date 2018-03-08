@@ -59,6 +59,10 @@ class GetData(object):
         else:
             return expect
 
+    def write_result(self,row,value):
+        col = data_config.global_val.get_result()
+        self.opera_excel.write_value(row,int(col),value)
+
 if __name__ == '__main__':
     gd = GetData()
     print(gd.get_is_run(1))

@@ -1,4 +1,5 @@
 import xlrd
+from xlutils.copy import copy
 
 
 class OperationExcel(object):
@@ -23,6 +24,13 @@ class OperationExcel(object):
 
     def get_cell_value(self,row,col):
         return self.data.cell_value(row,col)
+
+    def write_value(self,row,col,value):
+        read_file = xlrd.open_workbook(self.filename)
+        write_file = copy(read_file)
+        write_sheet = write_file.get_sheet(0)
+        write_sheet.write(row,col,value)
+        write_file.save(self.filename)
 
 if __name__ == '__main__':
     operationexcle = OperationExcel('../dataconfig/case1.xls',0)
