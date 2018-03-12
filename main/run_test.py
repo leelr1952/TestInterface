@@ -6,7 +6,7 @@ from utils.common_util import CommonUtil
 class RunTest(object):
     def __init__(self):
         self.runmethod = RunMethod()
-        self.getdata = GetData('../dataconfig/case1.xlsx',0)
+        self.getdata = GetData()
         self.commonutil = CommonUtil()
 
     def go_on_run(self):

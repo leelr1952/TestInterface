@@ -1,0 +1,25 @@
+from utils.operation_excel import OperationExcel
+from base.runmethod import RunMethod
+from data.get_data import GetData
+
+
+class DependentData(object):
+
+    def __init__(self,case_id):
+        self.opexcel = OperationExcel()
+        self.case_id = case_id
+        self.getdata = GetData()
+        self.runmethod = RunMethod()
+
+    def get_case_line_data(self):
+        row_data = self.opexcel.from_case_id_get_row_data(self.case_id)
+        return row_data
+
+    def rundependent(self):
+        row_num = self.opexcel.from_case_id_get_row_num(self.case_id)
+        request_data = self.getdata.get_data_for_json(row_num)
+        url = self.getdata.get_url(row_num)
+        method = self.getdata.get_request_method(row_num)
+        header = self.getdata.is_header(row_num)
+        res = self.runmethod.run_main(url, method, request_data, header)
+        return res
