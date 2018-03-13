@@ -63,6 +63,14 @@ class GetData(object):
         col = data_config.global_val.get_result()
         self.opera_excel.write_value(row,int(col),value)
 
+    def get_data_depend(self,row):
+        col = data_config.global_val.get_data_depend()
+        data_depend = self.opera_excel.get_cell_value(row, int(col))
+        if data_depend == "":
+            return None
+        else:
+            return data_depend
+
 if __name__ == '__main__':
     gd = GetData()
     print(gd.get_is_run(1))

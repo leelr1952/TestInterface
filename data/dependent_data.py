@@ -1,6 +1,7 @@
 from utils.operation_excel import OperationExcel
 from base.runmethod import RunMethod
 from data.get_data import GetData
+from jsonpath_rw import jsonpath,parse
 
 
 class DependentData(object):
@@ -23,3 +24,11 @@ class DependentData(object):
         header = self.getdata.is_header(row_num)
         res = self.runmethod.run_main(url, method, request_data, header)
         return res
+
+    #在依赖response中查找依赖数据
+    def get_data_for_key(self,row):
+        depend_data = self.getdata.get_data_depend(row)
+        response_data = self.rundependent()
+        p_depend_data = parse(depend_data)
+        madle = p_depend_data.find(response_data)
+        return [math.value for math in madle][0]
