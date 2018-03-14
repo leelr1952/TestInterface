@@ -39,7 +39,7 @@ class OperationExcel(object):
         return row_data
 
     #根据case_id获取行号
-    def from_case_id_get_row_num(self,case_id):
+    def from_case_id_get_row_num(self, case_id):
         num = 0
         col_datas =self.get_col_data()
         for col_data in col_datas:

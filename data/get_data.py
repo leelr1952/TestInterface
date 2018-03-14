@@ -71,6 +71,22 @@ class GetData(object):
         else:
             return data_depend
 
+    def is_depend(self,row):
+        col = data_config.global_val.get_case_depend()
+        case_depend = self.opera_excel.get_cell_value(row, int(col))
+        if case_depend is not None:
+            return case_depend
+        else:
+            return None
+
+    def get_field_depend(self, row):
+        col = data_config.global_val.get_field_depend()
+        field_depend = self.opera_excel.get_cell_value(row, int(col))
+        if field_depend is not None:
+            return field_depend
+        else:
+            return None
+
 if __name__ == '__main__':
     gd = GetData()
     print(gd.get_is_run(1))

@@ -6,10 +6,10 @@ from jsonpath_rw import jsonpath,parse
 
 class DependentData(object):
 
-    def __init__(self,case_id):
+    def __init__(self, case_id):
         self.opexcel = OperationExcel()
-        self.case_id = case_id
         self.getdata = GetData()
+        self.case_id = case_id
         self.runmethod = RunMethod()
 
     def get_case_line_data(self):
@@ -29,6 +29,9 @@ class DependentData(object):
     def get_data_for_key(self,row):
         depend_data = self.getdata.get_data_depend(row)
         response_data = self.rundependent()
+        print(depend_data)
+        print("************************")
+        print(response_data)
         p_depend_data = parse(depend_data)
         madle = p_depend_data.find(response_data)
         return [math.value for math in madle][0]
