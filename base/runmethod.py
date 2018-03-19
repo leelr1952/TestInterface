@@ -1,5 +1,7 @@
 import requests
 import json
+import urllib
+import urllib3
 
 
 class RunMethod(object):
@@ -12,17 +14,26 @@ class RunMethod(object):
         return res
 
     def get_main(self,url,data,header=None):
+        urllib3.disable_warnings()
         res = None
         if header is not None:
-            res = requests.get(url=url, data=data, headers=header)
+            url_data = urllib.parse.urlencode(data)
+            #print(data)
+            url = url + "?" + url_data
+            print(url)
+            res = requests.get(url=url, data=data, headers=header ,verify=False)
         else:
             res = requests.get(url=url, data=data)
-        return res
+
+        return res.text
 
     def run_main(self,url,method,data=None,header=None):
         res = None
         if method == 'POST':
             res = self.post_main(url,data,header)
+            return json.dumps(res, ensure_ascii=True, sort_keys=True, indent=2)
+
         else:
             res = self.get_main(url,data,header)
-        return json.dumps(res, ensure_ascii=True, sort_keys=True, indent=2)
+            return res
+

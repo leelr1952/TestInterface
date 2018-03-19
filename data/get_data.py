@@ -24,7 +24,7 @@ class GetData(object):
         col = data_config.global_val.get_header()
         header = self.opera_excel.get_cell_value(row,int(col))
         if header == 'yes':
-            return data_config.get_header.value()
+            return data_config.global_val.get_header_value()
         else:
             return None
 

@@ -2,6 +2,7 @@ from base.runmethod import RunMethod
 from data.get_data import GetData
 from data.dependent_data import DependentData
 from utils.common_util import CommonUtil
+from utils.send_mail import SendMail
 
 
 class RunTest(object):
@@ -9,8 +10,11 @@ class RunTest(object):
         self.runmethod = RunMethod()
         self.getdata = GetData()
         self.commonutil = CommonUtil()
+        self.sendmail = SendMail()
 
     def go_on_run(self):
+        pass_count = []
+        fail_count = []
         rows = self.getdata.get_case_lines()
         for i in range(1,rows):
             is_run = self.getdata.get_is_run(i)
@@ -19,8 +23,10 @@ class RunTest(object):
                 is_depend = self.getdata.is_depend(i)
                 request_method = self.getdata.get_request_method(i)
                 expect = self.getdata.get_expect(i)
+                print(expect)
                 is_header = self.getdata.is_header(i)
                 data = self.getdata.get_data_for_json(i)
+                print(data)
                 depend_case = self.getdata.is_depend(i)
                 if is_depend:
                     self.depend_data = DependentData(depend_case)
@@ -28,15 +34,18 @@ class RunTest(object):
                     data_depend = self.depend_data.get_data_for_key(i)
                     data[field_depend] = data_depend
                 res = self.runmethod.run_main(url,request_method,data,is_header)
-                #print(res)
+
                 if self.commonutil.iscontain(expect,res):
-                    #print("测试通过")
+                    print("测试通过")
                     self.getdata.write_result(i,"测试通过")
+                    pass_count.append(i)
                 else:
-                    #print("测试失败")
-                    self.getdata.write_result(i,"测试失败")
+                    print("测试失败")
+                    self.getdata.write_result(i,res)
+                    fail_count.append(i)
             else:
                 return None
+        #self.sendmail.sendmain(pass_count, fail_count)
 
 if __name__=='__main__':
     runtest = RunTest()
