@@ -20,6 +20,11 @@ class GetData(object):
             flag = False
         return flag
 
+    def is_cookie(self, row):
+        col = data_config.global_val.get_cookie()
+        cookie = self.opera_excel.get_cell_value(row, int(col))
+        return cookie
+
     def is_header(self,row):
         col = data_config.global_val.get_header()
         header = self.opera_excel.get_cell_value(row,int(col))

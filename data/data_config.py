@@ -4,13 +4,14 @@ class global_val:
     url = '2'
     run = '3'
     request_way = '4'
-    header = '5'
-    case_depend = '6'
-    data_depend = '7'
-    field_depend = '8'
-    data = '9'
-    expect = '10'
-    result = '11'
+    cookie = '5'
+    header = '6'
+    case_depend = '7'
+    data_depend = '8'
+    field_depend = '9'
+    data = '10'
+    expect = '11'
+    result = '12'
 
     def get_id():
         return global_val.id
@@ -26,6 +27,9 @@ class global_val:
 
     def get_request_way():
         return global_val.request_way
+
+    def get_cookie():
+        return global_val.cookie
 
     def get_header():
         return global_val.header
