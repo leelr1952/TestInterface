@@ -51,7 +51,6 @@ class RunTest(object):
                         "apsid":cookie
                     }
 
-
                 res = self.runmethod.run_main(url,request_method,data,is_header,cookies)
 
                 if self.commonutil.iscontain(expect,res):

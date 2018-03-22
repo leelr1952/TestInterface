@@ -7,23 +7,27 @@ import urllib3
 class RunMethod(object):
     def post_main(self,url,data,header=None,cookies=None):
         res = None
+        s = requests.session()
+        s.keep_alive = False
         if header is not None:
-            res = requests.post(url=url,data=data,headers=header,cookies=cookies).json()
+            res = s.post(url=url,data=data,headers=header,cookies=cookies).json()
         else:
-            res = requests.post(url=url,data=data,cookies=cookies).json()
+            res = s.post(url=url,data=data,cookies=cookies).json()
         return res
 
     def get_main(self,url,data,header=None,cookies=None):
         urllib3.disable_warnings()
         res = None
+        s = requests.session()
+        s.keep_alive = False
         if header is not None:
             url_data = urllib.parse.urlencode(data)
             #print(data)
             url = url + "?" + url_data
             print(url)
-            res = requests.get(url=url, data=data, headers=header , cookies=cookies, verify=False)
+            res = s.get(url=url, data=data, headers=header, cookies=cookies, verify=False)
         else:
-            res = requests.get(url=url, data=data, cookies=cookies)
+            res = s.get(url=url, data=data, cookies=cookies, verify=False)
 
         return res.text
 
